@@ -1,0 +1,18 @@
+package dev.jlkesh.java_telegram_bots.utils;
+
+import dev.jlkesh.java_telegram_bots.dataserver.FileType;
+import lombok.NonNull;
+import org.mindrot.jbcrypt.BCrypt;
+
+public class PasswordEncoderUtils {
+
+    public static String encode(@NonNull String rawPassword) {
+        return BCrypt.hashpw(rawPassword, BCrypt.gensalt());
+    }
+
+    public static boolean checkPassword(@NonNull String rawPassword, @NonNull String encodedPassword) {
+
+
+        return BCrypt.checkpw(rawPassword, encodedPassword);
+    }
+}
