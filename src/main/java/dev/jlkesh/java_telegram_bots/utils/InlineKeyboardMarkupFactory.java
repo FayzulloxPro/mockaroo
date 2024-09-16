@@ -201,7 +201,6 @@ public class InlineKeyboardMarkupFactory {
 
     public static InlineKeyboardMarkup backMainMenu(String lang) {
         return new InlineKeyboardMarkup().addRow(getInlineButton(getLocalizedMessage("b.back", lang), "mainMenu"));
-
     }
 
     public static InlineKeyboardMarkup getFields(Set<Field> fieldSet, String lang) {
@@ -218,7 +217,7 @@ public class InlineKeyboardMarkupFactory {
         return new InlineKeyboardMarkup().addRow(
                 getInlineButton(getLocalizedMessage("b.back.field.list",lang), "fieldList"),
                 getInlineButton(getLocalizedMessage("b.delete.field", lang), field.getFieldType() + "_deleteField"),
-                getInlineButton(getLocalizedMessage("⬆️"+"b.main.menu", lang), "mainMenu")
+                getInlineButton("⬆️"+getLocalizedMessage("b.main.menu", lang), "mainMenu")
         );
     }
 

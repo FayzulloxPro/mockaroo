@@ -121,10 +121,9 @@ public class GenerateDataCallbackProcessor implements Processor<GenerateDataStat
             for (Field field : fieldSet) {
                 if (String.valueOf(field.getFieldType()).equalsIgnoreCase(fieldTypeString)) {
                     bot.execute(new EditMessageText(chatID, messageId, getLocalizedMessage("field.name", language) + field.getFieldName() + "\n" +
-                                    getLocalizedMessage("field.type", language) + field.getFieldType()).replyMarkup(
-                                    InlineKeyboardMarkupFactory.fieldMenu(field, language)
-                            )
-                    );
+                            getLocalizedMessage("field.type", language) + field.getFieldType()).replyMarkup(
+                            fieldMenu(field, language)
+                    ));
                     return;
                 }
             }

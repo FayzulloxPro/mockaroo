@@ -96,7 +96,7 @@ public class FakerApplicationService {
                     rowInsert.add(sqlData.getFieldName());
                     valueInsert.add(sqlData.getValue());
                 }
-                result.add("insert into "+fileName+rowInsert+" " + "values"+valueInsert);
+                result.add("insert into "+fileName.substring(0,fileName.length()-4)+rowInsert+" " + "values"+valueInsert);
             }
             Path path = Path.of(fileName);
             File file = new File(path.toUri());
