@@ -8,10 +8,8 @@ import com.pengrad.telegrambot.model.request.ForceReply;
 import com.pengrad.telegrambot.request.DeleteMessage;
 import com.pengrad.telegrambot.request.SendMessage;
 import dev.jlkesh.java_telegram_bots.config.TelegramBotConfiguration;
-import dev.jlkesh.java_telegram_bots.daos.FileDAO;
 import dev.jlkesh.java_telegram_bots.daos.UserDao;
 import dev.jlkesh.java_telegram_bots.dataserver.FakerApplicationGenerateRequest;
-import dev.jlkesh.java_telegram_bots.domains.FIleDomain;
 import dev.jlkesh.java_telegram_bots.domains.UserDomain;
 import dev.jlkesh.java_telegram_bots.dtos.FieldDTO;
 import dev.jlkesh.java_telegram_bots.processors.RegisterUserCallbackProcessor;
@@ -21,11 +19,10 @@ import dev.jlkesh.java_telegram_bots.steps.RegistrationState;
 import dev.jlkesh.java_telegram_bots.steps.State;
 import dev.jlkesh.java_telegram_bots.utils.InlineKeyboardMarkupFactory;
 
-import java.util.*;
+import java.util.Objects;
 
 import static dev.jlkesh.java_telegram_bots.config.ThreadSafeBeansContainer.*;
-import static dev.jlkesh.java_telegram_bots.steps.DefaultState.NOTHING;
-import static dev.jlkesh.java_telegram_bots.utils.MessageSourceUtils.*;
+import static dev.jlkesh.java_telegram_bots.utils.MessageSourceUtils.getLocalizedMessage;
 
 
 /*@Slf4j*/
@@ -42,8 +39,8 @@ public class MessageHandler implements Handler {
 
         UserDao dao = new UserDao();
         UserDomain user = dao.getUser(String.valueOf(chatID));
-
-        if ("/history".equals(text)) {
+        startGenerateMockData(chatID, user);
+        /*if ("/history".equals(text)) {
 
             FileDAO fileDAO = FileDAO.getInstance();
             List<FIleDomain> files = fileDAO.getFiles(1, 10, String.valueOf(chatID));
@@ -109,7 +106,7 @@ public class MessageHandler implements Handler {
                     getFieldName(chatID, text, user);
                 }
             }
-        }
+        }*/
     }
 
 
